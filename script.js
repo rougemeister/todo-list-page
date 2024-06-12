@@ -43,3 +43,25 @@ let todos = [];
 
             });
         }
+
+
+        function addTodoItem(event) {
+            event.preventDefault(); 
+
+          
+            const title = document.getElementById('title').value;
+            const description = document.getElementById('description').value;
+            const dueDate = document.getElementById('due-date').value;
+
+            todos.push({
+                title,
+                description,
+                due_date: dueDate
+            });
+
+            document.getElementById('title').value = '';
+            document.getElementById('description').value = '';
+            document.getElementById('due-date').value = '';
+
+            renderTodoList();
+        }
