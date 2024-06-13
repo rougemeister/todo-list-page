@@ -47,6 +47,8 @@ textarea {
     resize: none;
     overflow:hidden;
 }
+
+
 button {
     padding: 10px;
     border-radius: 10px;
@@ -64,7 +66,7 @@ form {
 .todo-item {
     background-color: rgb(237, 251, 237);
     padding: 10px 0;
-    border-bottom: 2px solid gray;
+    border-bottom: 2px solid rgb(210, 236, 248);
     padding: 10px 25px;
 }
 
@@ -72,4 +74,16 @@ form {
 .todo-item:last-child{
     border-bottom: 5px solid blueviolet;
     
+}
+
+.btn-light {
+    background-color: white;
+    border: 2px solid blueviolet;
+    color: blueviolet;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
