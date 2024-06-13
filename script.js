@@ -3,7 +3,7 @@ let todos = [];
         // Function to render the to-do list
         function renderTodoList() {
             const todoListElement = document.getElementById('todo-list');
-            todoListElement.innerHTML = ''; // Clear existing list
+            todoListElement.innerHTML = '';
 
             // Loop through each to-do item and create HTML elements to display them
             todos.forEach((todo, index) => {
@@ -31,11 +31,11 @@ let todos = [];
         }
 
 
-        // Function to add a new to-do item
+ 
         function addTodoItem(event) {
-            event.preventDefault(); // Prevent form submission
+            event.preventDefault(); 
 
-            // Get form input values
+        
             const title = document.getElementById('title').value;
             const description = document.getElementById('description').value;
             const dueDate = document.getElementById('due-date').value;
@@ -44,7 +44,9 @@ let todos = [];
             todos.push({
                 title,
                 description,
-                due_date: dueDate
+                due_date: dueDate,
+                completed: false
+
 
             });
 
@@ -94,8 +96,47 @@ let todos = [];
             renderTodoList();
         }
 
-        // Attach event listener to the form for adding new to-do items
+
+
+        function sortByDueDateAscending(arr) {
+            return arr.sort((a, b) => new Date(a.due_date) - new Date(b.due_date));
+        }
+
+
+        function sortByDueDateDescending(arr) {
+            return arr.sort((a, b) => new Date(b.due_date) - new Date(a.due_date));
+        }
+
+        function filterByCompleted (arr){
+            return arr.filter(el => el.completed === true)
+        }
+        
+        
+
+        
         document.getElementById('todo-form').addEventListener('submit', addTodoItem);
+
+
+        document.querySelector('.ascend').addEventListener('click', ()=>{
+
+            sortByDueDateAscending(todos)
+            renderTodoList();
+        })
+
+        document.querySelector('.descend').addEventListener('click', ()=>{
+
+            sortByDueDateDescending(todos)
+            renderTodoList();
+        })
+
+        document.querySelector('.filter').addEventListener('click', ()=>{
+
+            todos = filterByCompleted(todos)
+            renderTodoList();
+        })
+
+
+
 
         // Initial rendering of the to-do list
         renderTodoList();
